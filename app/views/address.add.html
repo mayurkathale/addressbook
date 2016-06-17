@@ -1,0 +1,70 @@
+
+<form id="addform" class="form-horizontal addform" name="frmReg"  novalidate ng-submit="frmReg.$valid && addAddress()" accept-charset="UTF-8">
+  <div class="form-group">
+    <label for="fname">First name</label>
+    <input type="text" class="form-control"
+           id="fname"
+           name="fname"
+           ng-model="address.fname"
+           ng-maxlength="30"
+           maxlength="30"
+           ng-class="{ 'has-error' : frmReg.fname.$invalid && frmReg.fname.$touched}"
+           required>
+                  <span ng-show="frmReg.fname.$touched || frmReg.fname.$submitted">
+                    <span ng-show="frmReg.fname.$error.required">Name is required.</span>
+                    <span ng-show="frmReg.fname.$error.maxlength">Name must be less than 30 characters.</span>
+                  </span>
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control"
+           id="lname"
+           name="lname"
+           ng-model="address.lname"
+           ng-maxlength="30"
+           maxlength="30"
+           ng-class="{ 'has-error' : frmReg.lname.$invalid && frmReg.lname.$touched }"
+           required>
+                  <span ng-show="frmReg.lname.$touched || frmReg.lname.$submitted">
+                    <span ng-show="frmReg.lname.$error.required">Lastname is required.</span>
+                    <span ng-show="frmReg.lname.$error.maxlength">Lastname must be less than 30 characters.</span>
+                  </span>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email"
+           class="form-control"
+           id="email" name="email"
+           ng-model="address.email"
+           ng-maxlength="50"
+           maxlength="50"
+           ng-class="{ 'has-error' : frmReg.email.$invalid && frmReg.email.$touched }"
+           required>
+                  <span ng-show="frmReg.email.$touched || frmReg.email.$submitted">
+                    <span ng-show="frmReg.email.$error.required">Email is required.</span>
+                    <span ng-show="frmReg.email.$error.email">Incorrect email format.</span>
+                     <span ng-show="frmReg.email.$error.maxlength">Email should use lesser than 50 character.</span>
+                  </span>
+  </div>
+
+  <div class="form-group">
+    <label for="country">Country</label>
+    <select id="country"
+            name="country"
+            ng-model="address.country"
+            ng-options="cont.name as cont.name for cont in countriesList"
+            class="form-control"
+            ng-class="{ 'has-error' : frmReg.country.$invalid && frmReg.country.$touched }"
+            required></select>
+                  <span ng-show="frmReg.country.$touched || frmReg.country.$submitted">
+                    <span ng-show="frmReg.country.$error.required">Please Select,   Country is required.</span>
+                  </span>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-warning" ui-sref="home"><i class="glyphicon glyphicon-arrow-left"></i></button>
+    <input type="submit" class="btn btn-success" value="Save" ng-hide="address.id > 0">
+    <input type="submit" class="btn btn-success" ng-click="updateAddress()" value="Update" ng-show="address.id > 0">
+    <input type="reset" class="btn btn-primary" value="Clear">
+  </div>
+</form>

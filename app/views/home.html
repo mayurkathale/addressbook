@@ -1,0 +1,44 @@
+<ul class="address-list">
+  <li class="searchcontainer">
+    <form class="form">
+      <div class="input-group input-group-lg">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search By <span class="caret"></span></button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a ng-click="setFilterType('')">All</a></li>
+            <li><a ng-click="setFilterType('fname')">Name</a></li>
+            <li><a ng-click="setFilterType('email')">Email</a></li>
+            <li><a ng-click="setFilterType('country')">Location</a></li>
+          </ul>
+        </div>
+        <input type="text" class="form-control" placeholder="Search &hellip;" ng-model="filterText"/>
+        <div class="input-group-btn">
+          <button class="btn btn-default" ui-sref="address.add">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </li>
+  <li class="address bar"><span class="display-filter">Filter by: {{displayFilterText}}</span><span class="counts">{{filtered.length}} / {{addresses.length}}</span></li>
+  <li ng-repeat="address in addresses | filter: filterVar as filtered" class="address tile">
+    <div class="details">
+      <div class="name text-capitalize">
+        {{address.fname}} {{address.lname}}
+      </div>
+      <div class="email text-lowercase">
+        <i class="glyphicon glyphicon-envelope"></i>&nbsp;{{address.email}}
+      </div>
+      <div class="country">
+        <i class="glyphicon glyphicon-home"></i>&nbsp;{{address.country}}
+      </div>
+    </div>
+    <div class="action">
+      <ul>
+        <li><i class="glyphicon glyphicon-edit" ui-sref="address.edit({id: address.id})"></i></li>
+        <li><i class="glyphicon glyphicon-trash" ng-click="deleteAddressById(address.id)"></i></li>
+      </ul>
+    </div>
+  </li>
+  <li class="address text-center" ng-if="filtered < 1">No Records Found !</li>
+</ul>
