@@ -48,12 +48,39 @@
         </div>
       </div>
     </div>-->
-
     <div class="box">
       <div class="title-bar">
         <h3 class="title text-center text-uppercase">Address Book</h3>
       </div>
       <div ui-view></div>
+    </div>
+    <button type="button" class="btn btn-info btn-lg readme" data-toggle="modal" data-target="#modal">Read me!</button>
+    <div id="modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">To VolvoGroup,</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              <ul>
+                <li>Git do not allow big files to be linked such as css and js. That is reason, I have changed these to external links</li>
+                <li>Please, refer master branch for actual code evaluation. gh-page branches code modified to make it workable on github.</li>
+                <li>Git Repo: https://github.com/mayurkathale/addressbook/tree/master/app</li>
+                <li>country-list package was not able to download on my machine. I have directly included country object.</li>
+              </ul>
+            Please, Consider clauses mentioned above.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <div class="footer">
@@ -86,6 +113,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

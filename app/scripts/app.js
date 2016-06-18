@@ -18,9 +18,12 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'LocalStorageModule'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+    localStorageServiceProvider
+      .setPrefix('addressBookApp');
     $urlRouterProvider.otherwise("/home");
     $stateProvider
       .state('home', {

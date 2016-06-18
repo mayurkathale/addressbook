@@ -214,3 +214,10 @@ li.address.tile {
 #addform span {
   color: #ff6666 !important;
 }
+.readme {
+  position: absolute !important;
+  right: 10px;
+  top: 10px;
+  background-color: #586b8e !important;
+  color: #fff !important;
+}

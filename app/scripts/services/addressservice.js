@@ -8,7 +8,7 @@
  * Service in the addressBookApp.
  */
 angular.module('addressBookApp')
-  .service('AddressService', function () {
+  .service('AddressService', function (localStorageService) {
     var addresses = [{
       'id': 1,
       'fname' : 'Mayur',
@@ -57,8 +57,13 @@ angular.module('addressBookApp')
         'email' : 'walt.w@gmail.com',
         'country' : 'Mauritius'
       }];
-    var id = 8;
-    var storedAddresses = addresses;
+    if(localStorageService.get('key')==null) {
+      localStorageService.set('key', {'addresses': addresses, 'id':addresses.length+1});
+    }
+    addresses = localStorageService.get('key');
+    var id = addresses.id;
+    var storedAddresses = addresses.addresses;
+
     this.getAddressList = function() {
       return storedAddresses;
     };
@@ -66,6 +71,7 @@ angular.module('addressBookApp')
       address.id = id;
       id++;
       storedAddresses.push(address);
+      localStorageService.set('key', {'addresses': storedAddresses, 'id':id});
     };
     this.updateAddress = function(address) {
       storedAddresses.forEach(function(value, index) {
@@ -74,6 +80,7 @@ angular.module('addressBookApp')
           value.lname = address.lname;
           value.email = address.email;
           value.country = address.country;
+          localStorageService.set('key', {'addresses': storedAddresses, 'id':id});
         }
       });
     };
@@ -101,6 +108,7 @@ angular.module('addressBookApp')
       }
       if(index != -1) {
         storedAddresses = removeByAttr(storedAddresses, 'id', id);
+        localStorageService.set('key', {'addresses': storedAddresses, 'id':id});
       }
     };
 
