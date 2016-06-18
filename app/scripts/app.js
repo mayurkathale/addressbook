@@ -23,7 +23,7 @@ angular
   ])
   .config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     localStorageServiceProvider
-      .setPrefix('addressBookApp');
+      .setPrefix('addressBook');
     $urlRouterProvider.otherwise("/home");
     $stateProvider
       .state('home', {
